@@ -13,7 +13,7 @@ import { ref } from "@vue/reactivity";
 import { auth } from "../firebase/config";
 import useLogin from "../composables/useLogin"
 export default {
-  setup() {
+  setup(props,context) {
     let email = ref("");
     let password = ref("");
     let {error,signIn}= useLogin();
@@ -21,11 +21,11 @@ export default {
     let login = async () => {
       let res=await signIn(email.value,password.value)
       if(res){
-        console.log(res.user);
+        context.emit("enterChatroom")
       }
     };
 
-    return { email, password,login,error};
+    return {email,password,login,error};
   },
 };
 </script>

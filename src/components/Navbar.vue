@@ -10,6 +10,7 @@
 
 <script>
 import { ref } from '@vue/reactivity';
+import {auth} from '../firebase/config';
 import getUser from "../composables/getUser"
 export default {
     setup(){
